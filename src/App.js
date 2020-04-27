@@ -19,7 +19,7 @@ function App() {
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
 
   useEffect(() => {
-    if (quizeNum === 0) {
+    if (!loadingQuizes && quizes.length === 0) {
       dispatch(getQuizes());
     }
 
@@ -37,7 +37,7 @@ function App() {
 
       setAnswers(array);
     }
-  }, [quizeNum, quizes.length]);
+  }, [loadingQuizes]);
 
   const handleNextClick = () => {
     setQuizeNum(quizeNum + 1);
